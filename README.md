@@ -1,6 +1,6 @@
 # sicmutils-drafts
 
-Drafts of notes about Sicmutils
+Drafts of notes about [Sicmutils](https://github.com/sicmutils/sicmutils)
 
 ## License
 
