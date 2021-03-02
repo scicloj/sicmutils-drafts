@@ -2,7 +2,7 @@
 
 Drafts of notes about [Sicmutils](https://github.com/sicmutils/sicmutils)
 
-[table of contents][./toc.md]
+[Table of Contents](./toc.md)
 
 ## License
 
