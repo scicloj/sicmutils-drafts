@@ -5,27 +5,26 @@
             [sicmutils.env :as s :refer [up]]
             [scicloj.sicmutils-drafts.exercise-1p44 :as exercise]))
 
-(def simulation  exercise/data-chaotic)
+(def simulation  exercise/data-regular)
 
-(def origin [100 100])
+(def origin [250 250])
 
 (defn positions [state]
   (into [] (map #(into [] %) (partition 2 (exercise/rectilinear<-state state)))))
 
+(positions (nth simulation 10))
+
 (defn setup []
   (q/frame-rate 30)
   (q/color-mode :rgb)
-  (q/background  215 227 244)
-  (q/stroke 102 102 102)
 
   {:index 0})
 
 (defn draw-state [state]
   (let [poses (positions (nth simulation (:index state)))
-        l1 100
-        l2 100
-        position1 (into [] (s/+ (apply up origin) (poses 0) [0 l1]))
-        position2 (into [] (s/+ position1 [0 l2] (apply up (poses 1))))]
+        scale-factor 100
+        position1 (into [] (s/+ origin (s/* scale-factor (apply up (poses 0)))))
+        position2 (into []  (s/+ origin (s/* scale-factor (apply up (poses 1)))))]
 
     (q/background  215 227 244)
     (q/stroke 102 102 102)
@@ -39,8 +38,10 @@
     ))
 
 (defn update-state [state]
-  (do  (println @index)
-       {:index (inc (:index state))}))
+  (let [index-new (inc (:index state))]
+    (if (< index-new (count simulation))
+      {:index index-new}
+      {:index (dec (count simulation))})))
 
 (q/defsketch exercise_1p44
   :title "sicm exercise 1.6"
