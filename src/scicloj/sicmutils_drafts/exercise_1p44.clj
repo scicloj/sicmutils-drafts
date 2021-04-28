@@ -44,7 +44,8 @@ NOTE: Calling a useful function 'F->C' with no context should be a crime!
 (def m1 1.0)
 (def m2 3.0)
 (def l1 1.0)
-(def l2 0.9)
+;; (def l2 0.9)
+(def l2 1.0)
 (def g 9.8)
 ;; SIMULATION
 (def step "in seconds." 0.03)
@@ -72,6 +73,8 @@ NOTE: Calling a useful function 'F->C' with no context should be a crime!
 
 (defonce data-chaotic
   (run step horizon initial-chaotic))
+(def data-chaotic (run step horizon initial-chaotic))
+
 (defonce data-regular
   (run step horizon initial-regular))
 
