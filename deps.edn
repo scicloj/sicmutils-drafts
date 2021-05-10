@@ -1,7 +1,7 @@
 {:deps {org.clojure/clojure {:mvn/version "1.10.2"}
-        notespace-sicmutils {:mvn/version "0.18.0"}
+        notespace-sicmutils {:mvn/version "0.18.1"}
         aerial.hanami/aerial.hanami {:mvn/version "0.12.7"}
-        scicloj/tablecloth {:mvn/version "5.05"}
+        scicloj/tablecloth {:mvn/version "6.00-beta-10"}
         quil {:mvn/version "3.1.0"}
         gil {:mvn/version "1.0.0-SNAPSHOT"}
-        generateme/fastmath {:mvn/version "2.1.1"}}}
+        generateme/fastmath {:mvn/version "2.1.5"}}}
