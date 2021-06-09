@@ -1,5 +1,5 @@
 {:deps {org.clojure/clojure {:mvn/version "1.10.2"}
-        notespace-sicmutils {:mvn/version "0.18.1"}
+        notespace-sicmutils {:mvn/version "0.19.2"}
         aerial.hanami/aerial.hanami {:mvn/version "0.12.7"}
         scicloj/tablecloth {:mvn/version "6.00-beta-10"}
         quil {:mvn/version "3.1.0"}
