@@ -7,7 +7,7 @@
 (defn show-hiccup! [hiccup]
   (gn/assoc-note! 0 hiccup))
 
-(defn image [image-buffer title]
+(defn image->hiccup [image-buffer title]
   (let [filename (str "tmp-" (rand-int 999999) ".png")
         path     (str "resources/public/images/" filename)
         hiccup   [:img
@@ -23,12 +23,16 @@
      hiccup]))
 
 (defn show-image! [image-buffer title]
-  (show-hiccup! (image image-buffer title)))
+  (show-hiccup! (image->hiccup image-buffer title)))
+
+(defn images->hiccup [& image-buffers]
+  (->> image-buffers
+       (map #(image->hiccup % ""))
+       (into [:div])))
 
 (defn show-images! [& image-buffers]
   (->> image-buffers
-       (map #(image % ""))
-       (into [:div])
+       (apply images->hiccup)
        (show-hiccup!)))
 
 (defn start! []
