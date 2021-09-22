@@ -7,8 +7,8 @@
 (defn show-hiccup! [hiccup]
   (gn/assoc-note! 0 hiccup))
 
-(defn show-image! [image-buffer title]
-  (let [filename (str "tmp-" (rand-int 9999999) ".png")
+(defn image [image-buffer title]
+  (let [filename (str "tmp-" (rand-int 999999) ".png")
         path     (str "resources/public/images/" filename)
         hiccup   [:img
                   {:src   (str "images/" filename)
@@ -18,11 +18,23 @@
                      :dispose-fn #(.delete ^java.io.File
                                            (io/file path))})
     (bufimg/save! image-buffer path)
-    (show-hiccup! [:div
-                   [:p [:big title]]
-                   hiccup])))
+    [:div
+     [:p [:big title]]
+     hiccup]))
+
+(defn show-image! [image-buffer title]
+  (show-hiccup! (image image-buffer title)))
+
+(defn show-images! [& image-buffers]
+  (->> image-buffers
+       (map #(image % ""))
+       (into [:div])
+       (show-hiccup!)))
 
 (defn start! []
   (gn/start-server!) 
   (gn/browse-http-url)
   (gn/reset-notes!))
+
+
+
